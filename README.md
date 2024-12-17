@@ -1,2 +1,2 @@
 # OffTheRails
-WaterMark Ruby on Rails coding challenge
+Watermark Ruby on Rails coding challenge
