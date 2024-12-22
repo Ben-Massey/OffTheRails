@@ -1,0 +1,5 @@
+es:
+  hello: "Hola"
+  messages:
+    index:
+      title: "Mensajes"
