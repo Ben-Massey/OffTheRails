@@ -8,14 +8,6 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
- body {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    height: 100%;
-    margin: 0;
-    background-color: #bfbfb8;
-    overflow-x: hidden;
-  }
   
   nav {
     justify-content: flex-end;
@@ -31,41 +23,41 @@
     display: inline-block;
   }
 
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #bfbfb8;
+    overflow-x: hidden;
+  }
+  
   .header-container {
-    position: relative;
-    height: calc(20vh - 5rem);
+    display: grid;
+    place-items: center;
     background-color: #111827;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw; /* Full viewport width */
+    width: 100%;
     padding: 10px 10px 10px 0; /* Adjust padding to eliminate left-side gap */
     box-sizing: border-box;
+    height: calc(20vh - 5rem);
   }
-
+  
   .top-title {
     margin: 0;
     padding: 20px;
-    background-color: #111827;
     color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Ensures it fills the container without overflowing */
-    box-sizing: border-box;
     font-size: 3rem;
+    text-align: center;
   }
-
+  
   #newMessage-button {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
     margin-top: 2vh;
     margin-bottom: 2vh;
     width: 100%;
   }
-
+  
   #newMessage-button a {
-    display: block; 
     padding: 10px 20px;
     background-color: #111827;
     color: #FFFFFF;
@@ -75,84 +67,77 @@
     text-decoration: none;
     text-align: center;
   }
-
-  .newMessage-button a:hover {
+  
+  #newMessage-button a:hover {
     background-color: #374151;
   }
-
-  .edit-button a {
-    background-color: #111827;
-    border: 1px solid transparent;
-    border-radius: .75rem;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    flex: 0 0 auto;
-    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1rem;
-    padding: .45rem .7rem;
-    text-align: center;
-    text-decoration: none #6B7280 solid;
-    text-decoration-thickness: auto;
-    transition-duration: .2s;
-    transition-property: background-color,border-color,color,fill,stroke;
-    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: auto;
-  }
-
-  .edit-button {
-    margin: 20px;
-    margin-left: 0px;
-  }
-
-  .edit-button a:hover {
-    background-color: #374151;
-  }
-
+  
   #message {
     background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25vw, 30vw));
+    gap: 20px;
+    padding: 20px;
   }
-
+  
   .message-container {
-    display: inline-block;
-    align-items: center;
+    background-color: #FFFFFF;
     border-radius: 15px;
-    margin: 20px;
     padding: 10px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 10px;
     max-width: 25vw;
-    justify-content: center;
+    justify-items: start;
+    margin: 10 px;
     text-decoration: none;
   }
 
   .message-container a {
     text-decoration: none;
+    border-radius: 15px;
+    padding: 1rem;
+  }
+
+  .message-container a:hover {
+    background-color: #dad5d5;
   }
 
   .thumbnail {
-    margin-right: 10px;
-  }
-
-  .thumbnail img {
-    width: 25vw;
-    height: auto;
-  }
-
-  .title {
-    margin-right: 20px;
-    text-decoration: none;
-    color: black;
+    width: 100%;
   }
   
-  main {
-    max-width: 1024px;
-    margin: 0 auto;
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .title {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
   }
 
+  .edit-button {
+    margin-top: 2vh;
+  }
+  
+  .edit-button a {
+    background-color: #111827;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: .75rem;
+    padding: .45rem .7rem;
+    font-weight: 600;
+    text-align: center;
+    transition-duration: .2s;
+  }
+  
+  .edit-button a:hover {
+    background-color: #374151;
+  }
+  
   h1 {
     display: flex;
     font-size: 3.5rem;
@@ -161,35 +146,412 @@
     justify-content: center;
     background-color: #111827;
   }
-  
-  .notice {
-    color: green;
-  }
-  
-  /* Media query for smaller screens */
-@media (max-width: 768px) {
 
-  .header-container {
-    height: calc(30vh - 5rem);  /* Adjust height for mobile devices */
+  #form {
+    background-color: #FFFFFF;
+    padding: 1rem;
+    max-width: 100%;  /* Ensure the form doesn't overflow the container */
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
-  .top-title {
-    font-size: 2.5rem; /* Adjust font size for smaller screens */
+  #form div {
+    margin-bottom: 1vh;
+    width: 100%; 
   }
 
-  #newMessage-button {
-    margin-top: 5vh; /* Add more space for smaller screens */
-    margin-bottom: 5vh; /* Add more space for smaller screens */
-  }
+  #form input,
+  #form textarea,
+  #form file {
+    width: 90vw;
+    padding: 1rem;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
-
-@media (max-width: 480px) {
-  .top-title {
-    font-size: 2rem; /* Adjust font size even further for mobile screens */
+  
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    max-width: 90vw;
   }
 
-  #newMessage-button {
-    margin-top: 6vh; /* Adjust spacing for very small screens */
-    margin-bottom: 6vh; /* Adjust spacing for very small screens */
+  .form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1vh;
+    margin-left: 2vw;
+    flex-wrap: nowrap;
+    width: 10vw !important;
   }
-}
+  
+  .form-button {
+    padding: 1rem .5rem;
+    font-size: 1rem; 
+    border-radius: 5px; 
+    text-align: center; 
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  
+  .submit-button {
+    background-color: #111827;
+    color: white;
+    border: none;
+  }
+  
+  .submit-button:hover {
+    background-color: #374151;
+  }
+  
+  .cancel-button {
+    background-color: #f3f4f6;
+    color: #111827;
+    border: 1px solid #ccc;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e0e0e0;
+  }
+
+  trix-editor {
+    width: 100% !important;
+    max-width: 100%;
+    min-height: 10vh;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  trix-toolbar-1 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 90%;
+  }
+
+  trix-button-row {
+    display: inline-flex;  /* Keep buttons in a single line */
+    width: auto;  /* Allow the button row to take its natural width */
+    max-width: 70% !important;
+    flex: 0 0 auto;  /* Don't stretch or shrink */
+    font-size: 2rem;
+  }
+  
+  .form-item label {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1vh;
+  }
+
+  .form-item textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 150px;  /* Minimum height to ensure the text field is large enough */
+    box-sizing: border-box; /* Prevents padding from increasing the height */
+  }
+
+  .form-item input, .form-item textarea {
+    padding: 10px;
+    font-size: .75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Makes inputs take up the full width */
+  }
+  
+  /* Cancel button style */
+  #form a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  #form a:hover {
+    color: #374151;
+  }
+
+  .message-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .message-content {
+    grid-template-columns: 1fr !important; /* Ensure it takes priority */
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .featured-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Adds space below the image */
+  }
+  
+  .featured-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .video-container {
+    max-width: 100%; /* Ensures the container doesn't exceed screen width */
+    width: 100%;     /* Take up full width of its parent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Adds space below the video */
+    padding: 1rem;
+  }
+
+  .video-container video {
+    width: 100%;  /* Ensure the video width fits its container */
+    max-width: 100%;  /* Don't exceed the width of the container */
+    height: auto;  /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    object-fit: contain;  /* Ensures the video is scaled proportionally without distortion */
+  }
+
+  a {
+    color: #111827;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .back-button {
+    display: inline-block;
+    margin: 2rem;
+    padding: 10px 20px;
+    background-color: #111827;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-button a {
+    color: #FFFFFF;
+  }
+  
+  .back-button:hover {
+    background-color: #374151;
+  }
+
+  @media (min-width: 769px) and (max-width: 1920px) {
+    .header-container {
+      height: auto; /* Allow the header to be flexible for this range */
+      padding: 2rem 0; /* Add vertical padding for better spacing */
+    }
+
+    .top-title {
+      font-size: 3rem; /* Adjust title size for medium screens */
+    }
+
+    .message-content {
+      padding: 2rem;
+      grid-template-columns: 1fr 1fr; /* Two columns on medium screens */
+    }
+
+    .top-title {
+      font-size: 2.5rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .video-container {
+      margin-top: 1rem;
+    }
+  }
+  
+  /* Media queries for responsive adjustments */
+  @media (max-width: 768px) {
+    .header-container {
+      height: auto;
+      padding: 1rem; /* Adjust padding if necessary to prevent overflow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #form {
+      padding: 1rem;
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-item {
+      display: flex;
+      flex-wrap: wrap;  /* Allow form items to wrap on smaller screens */
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .form-item label {
+      width: 100%; 
+      margin-bottom: 0.5rem;
+    }
+  
+    .form-item input, 
+    .form-item textarea {
+      width: 100%; /* Ensure input fields take full width */
+      margin-bottom: 1rem; /* Space below each input */
+    }
+
+    .form-buttons {
+      display: flex;
+      flex-direction: row; /* Place buttons side by side */
+      justify-content: space-between;
+      width: 100%;
+      gap: 1rem;
+    }
+  
+    .form-button {
+      width: auto;  /* Buttons should only take as much space as needed */
+      padding: 0.5rem 1rem;  /* Adjust button padding */
+      text-align: center;
+    }
+
+    #form div {
+      width: 100%;
+    }
+  
+    .top-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 0;
+      padding: 0; /* Remove unnecessary padding */
+      width: 100%; /* Ensure the title doesn't overflow */
+      box-sizing: border-box;
+    }
+  
+    #newMessage-button {
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+    }
+  
+    #message {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    trix-editor {
+      width: 100% !important;
+      margin-top: 1vh;
+      padding: .5rem;
+    }
+
+    trix-toolbar {
+      width: 100% !important; 
+    }
+
+    trix-button-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    trix-editor {
+      margin-top: 1vh;
+      padding: .5rem;
+    }
+
+    .message-content {
+      padding: 1rem;
+      grid-template-columns: 1fr; /* Keep it a single column on mobile */
+    }
+  
+    .top-title {
+      font-size: 2rem;
+    }
+  
+    .description {
+      font-size: 1rem;
+    }
+  
+    .video-container {
+      margin-top: 1rem;
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      width: 100%;
+      min-width: 100%;
+    }
+
+    .back-button {
+      max-width: 90%;
+      align-content: center;
+      align-self: center;
+    }
+    
+    .top-title {
+      font-size: 2rem;
+    }
+  
+    #newMessage-button {
+      margin-top: 6vh;
+      margin-bottom: 6vh;
+    }
+
+    .message-container {
+      width: 100vw;
+      grid-template-columns: 90vw;
+    }
+  
+    #message {
+      grid-template-columns: max-content;
+    }
+
+    .message-content {
+      padding: 0.5rem; /* Further adjust padding for smaller screens */
+    }
+  
+    .description {
+      font-size: 1rem; /* Further adjust font size for small screens */
+    }
+  
+    .video-container {
+      width: 95%; /* Adjust width for very small screens */
+    }
+  
+    .back-button {
+      width: 100%; /* Make back button full width on small screens */
+      padding: 12px 0; /* Adjust padding */
+    }
+  }
+  

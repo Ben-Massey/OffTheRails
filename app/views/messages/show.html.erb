@@ -1,16 +1,25 @@
 <% cache @message do %>
     <div class="header-container">
-        <h1 class="top-title"><%= @message.title %></h1>
+      <h1 class="top-title"><%= @message.title %></h1>
     </div>
-    <div>
+    
+    <div class="message-content">
+      <!-- Description -->
+      <div class="description">
         <%= @message.description %>
-    </div>
-    <div>
+      </div>
+      
+      <!-- Featured Image -->
+      <div class="featured-image">
         <%= image_tag url_for(@message.featured_image) if @message.featured_image.attached? %>
-    </div>
-    <div>
+      </div>
+  
+      <!-- Video -->
+      <div class="video-container">
         <%= video_tag url_for(@message.video), controls: true, type: 'video/mp4' %>
+      </div>
     </div>
-<% end %>
-
-<p><%= link_to "Back", root_path %></p>
+  
+    <!-- Back Button -->
+    <%= link_to "Back", root_path, class: "back-button" %>
+  <% end %>
