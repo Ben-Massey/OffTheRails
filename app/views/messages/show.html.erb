@@ -1,18 +1,16 @@
-<section class="message">
-    <% cache @message do %>
-        <section class="message-info">
-            <h1><%= @message.title %></h1>
-            <div>
-                <%= @message.description %>
-            </div>
-        </section>
-        <div>
-            <%= image_tag url_for(@message.featured_image) if @message.featured_image.attached? %>
-        </div>
-        <div>
-            <%= video_tag url_for(@message.video), controls: true, type: 'video/mp4' %>
-        </div>
-    <% end %>
-</section>
+<% cache @message do %>
+    <div class="header-container">
+        <h1 class="top-title"><%= @message.title %></h1>
+    </div>
+    <div>
+        <%= @message.description %>
+    </div>
+    <div>
+        <%= image_tag url_for(@message.featured_image) if @message.featured_image.attached? %>
+    </div>
+    <div>
+        <%= video_tag url_for(@message.video), controls: true, type: 'video/mp4' %>
+    </div>
+<% end %>
 
 <p><%= link_to "Back", root_path %></p>

@@ -1,22 +1,27 @@
-<h1><%= t ".title" %></h1>
+<div class="header-container">
+  <h1 class="top-title"><%= t ".title" %></h1>
+</div>
 
-<%= link_to "New message", new_message_path %>
+<div id="newMessage-button">
+  <%= link_to "New message", new_message_path %>
+</div>
 
 <div id="message">
   <% @message.each do |message| %>
-    <%= link_to message do %>
-      <div>
-        <div id="thumbnail">
-          <%= image_tag url_for(message.featured_image) if message.featured_image.attached? %>
+    
+      <div class="message-container">
+        <%= link_to message do %>
+          <div class="thumbnail">
+            <%= image_tag url_for(message.featured_image) if message.featured_image.attached? %>
+          </div>
+          <div class="title">
+            <%= message.title %>
+          </div>
+        <% end %>
+        <div class="edit-button">
+          <%= link_to "Edit", edit_message_path(message) %>
         </div>
-        <div id="title">
-          <%= message.title %>
-        </div>
-        <div id="description">
-          <%= message.description %>
-        </div>
-        <%= link_to "Edit", edit_message_path(message) %>
       </div>
-    <% end %>
+    
   <% end %>
 </div>

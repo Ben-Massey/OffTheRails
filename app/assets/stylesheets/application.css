@@ -10,7 +10,11 @@
  */
  body {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 1rem;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+    background-color: #bfbfb8;
+    overflow-x: hidden;
   }
   
   nav {
@@ -26,25 +30,166 @@
   nav a {
     display: inline-block;
   }
+
+  .header-container {
+    position: relative;
+    height: calc(20vh - 5rem);
+    background-color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+    padding: 10px 10px 10px 0; /* Adjust padding to eliminate left-side gap */
+    box-sizing: border-box;
+  }
+
+  .top-title {
+    margin: 0;
+    padding: 20px;
+    background-color: #111827;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensures it fills the container without overflowing */
+    box-sizing: border-box;
+    font-size: 3rem;
+  }
+
+  #newMessage-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 100%;
+  }
+
+  #newMessage-button a {
+    display: block; 
+    padding: 10px 20px;
+    background-color: #111827;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .newMessage-button a:hover {
+    background-color: #374151;
+  }
+
+  .edit-button a {
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1rem;
+    padding: .45rem .7rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color,border-color,color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+  }
+
+  .edit-button {
+    margin: 20px;
+    margin-left: 0px;
+  }
+
+  .edit-button a:hover {
+    background-color: #374151;
+  }
+
+  #message {
+    background-color: #FFFFFF;
+  }
+
+  .message-container {
+    display: inline-block;
+    align-items: center;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px;
+    max-width: 25vw;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .message-container a {
+    text-decoration: none;
+  }
+
+  .thumbnail {
+    margin-right: 10px;
+  }
+
+  .thumbnail img {
+    width: 25vw;
+    height: auto;
+  }
+
+  .title {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+  }
   
   main {
     max-width: 1024px;
     margin: 0 auto;
+  }
+
+  h1 {
+    display: flex;
+    font-size: 3.5rem;
+    color: #FFFFFF;
+    padding: 10px;
+    justify-content: center;
+    background-color: #111827;
   }
   
   .notice {
     color: green;
   }
   
-  section.message {
-    display: flex;
-    gap: 1rem;
-    flex-direction: row;
+  /* Media query for smaller screens */
+@media (max-width: 768px) {
+
+  .header-container {
+    height: calc(30vh - 5rem);  /* Adjust height for mobile devices */
   }
-  
-  section.message img {
-    border-radius: 8px;
-    flex-basis: 50%;
-    max-width: 50%;
+
+  .top-title {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
   }
-  
+
+  #newMessage-button {
+    margin-top: 5vh; /* Add more space for smaller screens */
+    margin-bottom: 5vh; /* Add more space for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-title {
+    font-size: 2rem; /* Adjust font size even further for mobile screens */
+  }
+
+  #newMessage-button {
+    margin-top: 6vh; /* Adjust spacing for very small screens */
+    margin-bottom: 6vh; /* Adjust spacing for very small screens */
+  }
+}
