@@ -64,3 +64,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "active_model_serializers", "~> 0.10.15"
+
+group :test do
+  gem 'rspec-rails', '~> 5.0'
+end

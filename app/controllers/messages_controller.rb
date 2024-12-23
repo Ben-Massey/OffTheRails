@@ -1,11 +1,36 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: %i[show edit update]
+  before_action :set_message, only: %i[show edit update video]
 
   def index
     @message = Message.all
   end
 
   def show
+  end
+
+  def video
+    # Get the attached video file
+    video = @message.video
+
+    # Check if the video exists
+    if video.attached?
+      #set cache headers
+      response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+      response.headers['Pragma'] = 'no-cache'
+
+      # Set Content-Disposition to inline
+      response.headers['Content-Disposition'] = "inline; filename=#{video.filename.to_s}"
+      response.headers['Content-Type'] = video.content_type
+      # Serve the video with inline disposition
+      send_data(
+        video.download,
+        type: video.content_type,
+        disposition: 'inline',
+        filename: video.filename.to_s
+      )
+    else
+      render plain: "Video not found", status: :not_found
+    end
   end
 
   def new

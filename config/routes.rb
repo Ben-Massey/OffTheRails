@@ -13,4 +13,20 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "messages#index"
   resources :messages
+
+  resources :messages do
+    member do
+      get :video
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :messages, only: [:index, :show], defaults: { format: :json} do
+        collection do
+          get 'search'  # For search functionality
+        end
+      end
+    end
+  end  
 end
