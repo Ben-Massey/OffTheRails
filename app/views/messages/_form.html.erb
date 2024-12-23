@@ -1,29 +1,50 @@
 <div id="form">
   <%= form_with model: message do |form| %>
-      <div class="form-item">
-        <%= form.label :title %>
-        <%= form.text_field :title %>
+    <% if message.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+        <ul>
+          <% message.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
+    <% end %>
 
-      <div class="form-item">
-        <%= form.label :description, style: "display: block" %>
-        <%= form.rich_text_area :description %>
-      </div>
+    <!-- Title Field -->
+    <div class="form-item">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-input" %>
+    </div>
 
-      <div class="form-item">
-        <%= form.label :featured_image, style: "display: block" %>
-        <%= form.file_field :featured_image, accept: "image/*" %>
-      </div>
+    <!-- Description Field -->
+    <div class="form-item">
+      <%= form.label :description, style: "display: block" %>
+      <%= form.rich_text_area :description, class: "form-input" %>
+    </div>
 
-      <div class="form-item">
+    <!-- Tags Field -->
+    <div class="form-item">
+      <%= form.label :tags, "Tags (separate with commas)" %>
+      <%= form.text_field :tags, class: "form-input", value: message.tag_list.join(",") %> <!-- Show existing tags if any -->
+    </div>
 
-        <%= form.label :video, style: "display: block" %>
-        <%= form.file_field :video, accept: "video/mp4" %>
-      </div>
-    
-      <div class="form-buttons">
-        <%= form.submit "Submit", class: "form-button submit-button" %>
-        <%= link_to "Cancel", messages_path, class: "form-button cancel-button" %>
-      </div>
+    <!-- Featured Image Field -->
+    <div class="form-item">
+      <%= form.label :featured_image, style: "display: block" %>
+      <%= form.file_field :featured_image, accept: "image/*", class: "form-input" %>
+    </div>
+
+    <!-- Video Field -->
+    <div class="form-item">
+      <%= form.label :video, style: "display: block" %>
+      <%= form.file_field :video, accept: "video/mp4", class: "form-input" %>
+    </div>
+
+    <!-- Submit and Cancel Buttons -->
+    <div class="form-buttons">
+      <%= form.submit "Submit", class: "form-button submit-button" %>
+      <%= link_to "Cancel", messages_path, class: "form-button cancel-button" %>
+    </div>
   <% end %>
 </div>
