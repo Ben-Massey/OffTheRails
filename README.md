@@ -1,10 +1,19 @@
 # README
 
-In order to install necessary dependencies run: bundle install
+In order to install necessary dependencies run:
+bundle install
 
-to start the application run: rails s
+Set up the development database using:
+rails db:create db:migrate
 
-To see the web page navigate to: localhost:3000
+to start the application locally run:
+rails s
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To see the web page navigate to:
+localhost:3000
+
+Before running tests, reset the test database and clear any cached data:
+RAILS_ENV=test rails db:drop db:create db:migrate
+
+Run your tests with:
+bundle exec rspec
