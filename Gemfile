@@ -70,5 +70,5 @@ gem "active_model_serializers", "~> 0.10.15"
 group :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-rails', '~> 7.1'
 end
